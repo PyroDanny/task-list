@@ -3,25 +3,19 @@
 @section('title', 'Task List')
 
 @section('content')
-    {{-- @if (count($tasks) > 0)
-        <ul>
-            @foreach ($tasks as $task)
-                <li>{{ $task->title }}</li>
-            @endforeach
-        </ul>
-    @else
-        <p>No tasks found</p>
-    @endif --}}
+    <nav class="my-4">
+        <a class="link" href="{{route('tasks.create')}}">Add Task!</a>
+    </nav>
     @forelse ($tasks as $task)
     <div>
-        <a href="{{ route('tasks.show', ['task' => $task->id]) }}">{{$task->title}}</a>
+        <a href="{{ route('tasks.show', ['task' => $task->id]) }}" @class(['line-through' => $task->completed])>{{$task->title}}</a>
     </div>
     @empty
         <p>"No tasks found"</p>;
     @endforelse
 
     @if ($tasks->count())
-        <nav>
+        <nav class="mt-4">
             {{ $tasks->links() }}
         </nav>
     @endif

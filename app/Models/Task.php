@@ -11,5 +11,11 @@ class Task extends Model
  
     // mass assignment
     protected $fillable = ['title', 'description', 'long_description'];
-    // protected $guarded = [];
+    
+
+    public function toggleComplete()
+    {
+        $this->completed = !$this->completed;
+        $this->save();
+    }
 }
