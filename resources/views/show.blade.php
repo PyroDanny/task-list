@@ -25,7 +25,7 @@
     @endif
 </p>
 
-<div class="flex">
+<div class="flex gap-2">
     <a href="{{route('tasks.edit', ['task' => $task->id])}}" class="btn">Edit</a>
 
     <form method="POST" action="{{ route('tasks.toggle-complete', ['task' => $task->id]) }}">
